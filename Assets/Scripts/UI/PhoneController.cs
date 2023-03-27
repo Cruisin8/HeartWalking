@@ -16,11 +16,16 @@ public class PhoneController : MonoBehaviour
 	private bool isShowingMainPanel = true;
 
 	public NewsController newsController;
+	public ChatController chatController;
 
 	public enum AppType
 	{
 		NewsApp,
-		WeChatApp,
+		ChatApp,
+		PackageApp,
+		MapApp,
+		SaveApp,
+		LoadApp,
 		ConfigApp
 	}
 
@@ -100,6 +105,16 @@ public class PhoneController : MonoBehaviour
 		InitApps(index);
 	}
 
+	// 返回主页面
+	public void ReturnToMainPanel()
+	{
+		if (!isShowingMainPanel)
+		{
+			HideAllPanels();
+			ShowMainPanel();
+		}
+	}
+
 	// 调用对应app的初始化方法
 	private void InitApps(int index)
 	{
@@ -107,11 +122,23 @@ public class PhoneController : MonoBehaviour
 			case (int)AppType.NewsApp:
 				newsController.InitNewsApp();
 				break;
-			case (int)AppType.WeChatApp:
-				//InitForApp2();
+			case (int)AppType.ChatApp:
+				chatController.InitChatApp();
+				break;
+			case (int)AppType.PackageApp:
+				//InitForApp3();
+				break;
+			case (int)AppType.MapApp:
+				//InitForApp4();
+				break;
+			case (int)AppType.SaveApp:
+				//InitForApp5();
+				break;
+			case (int)AppType.LoadApp:
+				//InitForApp6();
 				break;
 			case (int)AppType.ConfigApp:
-				//InitForApp3();
+				//InitForApp7();
 				break;
 			default:
 				Debug.LogError("Unknown AppType: " + index);

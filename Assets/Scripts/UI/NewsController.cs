@@ -11,15 +11,15 @@ public class NewsController : MonoBehaviour
 
 	public void InitNewsApp()
 	{
-		// 隐藏所有新闻图片
-		foreach (GameObject newsImage in newsImages) {
-			newsImage.SetActive(false);
-		}
-
 		// 设置每个新闻按钮的点击事件
 		for (int i = 0; i < newsButtons.Length; i++) {
 			int index = i; // 避免闭包问题
 			newsButtons[i].onClick.AddListener(() => OnNewsButtonClicked(index));
+		}
+
+		// 隐藏所有新闻图片
+		foreach (GameObject newsImage in newsImages) {
+			newsImage.SetActive(false);
 		}
 	}
 
